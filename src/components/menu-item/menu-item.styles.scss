@@ -14,6 +14,7 @@
   
       & .background-image {
         transform: scale(1.1);
+        // cubic-bezier controls speed of transformation
         transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
       }
   

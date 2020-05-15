@@ -1,13 +1,29 @@
 import React from 'react';
 import './App.css';
+import {Switch, Route} from 'react-router-dom'
 
 
-import Homepage from './pages/homepage/homepage.component'
+import HomePage from './pages/homepage/homepage.component'
+const HatsPage = () =>
+ (
+   <div>
+     <h1>Hats Page</h1>
+   </div>
+ )
 
 function App() {
   return (
-    <Homepage />
+    <div>
+      {/* switch - as long as one route matches we know somethign will render. 
+      Only one thing will render */}
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route path='/hats' component={HatsPage} />
+      </Switch>
+
+    </div>
   );
 }
 
 export default App;
+
