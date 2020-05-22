@@ -1,0 +1,28 @@
+.header {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    // {/* 100% width, 70px, flex so that children and logo-container and options will be pushed apart as far as possible with any remaining space that isn't taken up by them */}
+    margin-bottom: 25px;
+
+  
+    .logo-container {
+      height: 100%;
+      width: 70px;
+      padding: 25px;
+    }
+  
+    .options {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+  
+      .option {
+        padding: 10px 15px;
+      }
+    }
+  }
+  
