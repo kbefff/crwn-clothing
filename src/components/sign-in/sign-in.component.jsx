@@ -5,6 +5,9 @@ import './sign-in.styles.scss'
 import CustomButton from '../custom-button/custom-button.component'
 import FormInput from '../form-input/form-input.component';
 
+
+import {signInWithGoogle} from '../../firebase/firebase.utils'
+
 // we are going to use a class component because we have to store what the user is typing in
 
 
@@ -62,7 +65,11 @@ class SignIn extends React.Component {
                         label='password'
                         required />
 
-                    <CustomButton type="submit">Sign In</CustomButton>
+                    <CustomButton type="submit">Sign in</CustomButton>
+                    <CustomButton onClick={signInWithGoogle}>
+                        {''}
+                        Sign in with Google
+                    </CustomButton>
 
                 </form>
             </div>  
