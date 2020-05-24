@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 // we are setting it to the logo key word
 import {ReactComponent as Logo} from '../../assets/crown.svg'
-import './header.style.scss';
+import './header.styles.scss';
 
 
 //functional component
