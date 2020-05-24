@@ -7,3 +7,11 @@ a {
   text-decoration: none;
   color: black;
 }
+
+
+/* nullify default browser padding */
+* {
+
+  box-sizing: border-box;
+
+}
