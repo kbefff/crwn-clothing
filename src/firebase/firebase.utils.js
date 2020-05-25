@@ -17,6 +17,37 @@ const config = {
     measurementId: "G-W9MEC6T72T"
 };
 
+// functina llows uto take user auth and store ind b
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    // our function has to make sure we're getting back a valid object so we can only sign out when we are signed in
+    if (!userAuth) {
+        return;    
+    }
+
+    const userRef = firestore.doc(`users/${userAuth.uid}`)
+
+    const snapShot = await userRef.get();
+
+    if (!snapShot.exists) {
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+
+        // if tere is no user, create one
+        try {
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...additionalData
+            })
+        } catch (error) {
+            console.log('error creating user', error.message);
+        }
+    }
+
+    return userRef;
+}
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();

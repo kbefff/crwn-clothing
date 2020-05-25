@@ -8,7 +8,7 @@ import HomePage from './pages/homepage/homepage.component'
 import ShopPage from './pages/shop/shop.component'
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.comopnent'
 import Header from './components/header/header.component'
-import { auth } from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 
 
 // class so we can store state
@@ -28,10 +28,29 @@ class App extends React.Component{
   // this is an open subscription between our app and firebase
   componentDidMount() {
     // method from firebase auth taking parameter of what the user state is
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       // user authenticated session persistence --> when you refresh the page your session is saved
       // you don't have to sign in again
-      this.setState({currentUser: user})
+      if (userAuth) {
+        // going to use this to check if our db has updated
+        const userRef = await createUserProfileDocument(userAuth);
+
+          userRef.onSnapshot(snapShot => {
+            this.setState(
+              {
+                currentUser: {
+                  id: snapShot.id,
+                  ...snapShot.data()
+                }
+              });
+
+              console.log(this.state)
+          });
+        }
+      // if the user logs out, set user to null from auth Library
+        else {
+          this.setState({ currentUser: userAuth})
+        }
     });
 
   }
