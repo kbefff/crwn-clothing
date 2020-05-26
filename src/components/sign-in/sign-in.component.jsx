@@ -6,7 +6,7 @@ import CustomButton from '../custom-button/custom-button.component'
 import FormInput from '../form-input/form-input.component';
 
 
-import {signInWithGoogle} from '../../firebase/firebase.utils'
+import { auth, signInWithGoogle} from '../../firebase/firebase.utils'
 
 // we are going to use a class component because we have to store what the user is typing in
 
@@ -24,10 +24,10 @@ class SignIn extends React.Component {
         }
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
 
-        this.setState({email: '', password: ''})
+        const { email, password } =this.state;
     }
 
     handleChange = event => {
@@ -36,8 +36,11 @@ class SignIn extends React.Component {
         //dynamically set state --> if name is password it will say 
         //password and use the value etc
         //this way we can pass the same function into different inputs
-        this.setState({[name]: value})
+        // try {
+        //     await auth.signInWithEmailAndPassword({ email, password });
+        // this.setState({[name]: value});
 
+        // }
     }
 
     render() {
