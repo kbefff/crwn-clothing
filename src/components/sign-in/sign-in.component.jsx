@@ -50,7 +50,7 @@ class SignIn extends React.Component {
                 <h2>I already have an acount</h2>
                 <span>Sign in with your email and password</span>
 
-            {/* on submit function tht calls our method handle sugmit which for now will prevent default submit action */}
+            {/* on submit function tht calls our method handle submit which for now will prevent default submit action */}
                 <form onSubmit={this.handleSubmit}>
 
                     <FormInput 
