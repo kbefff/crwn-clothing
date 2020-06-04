@@ -10,3 +10,6 @@ const middlewares = [logger];
 
 // spread all items in middleware into applyMiddleware function
 const store = createStore(rootReducer, applyMiddleware(...middlewares))
+
+
+export default store;

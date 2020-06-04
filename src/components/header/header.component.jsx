@@ -39,6 +39,9 @@ const Header = ({ currentUser }) => (
 
 );
 
+const mapStateToProps = state => ({ // the state is the top level root reducet
+    currentUser:  state.user.currentUser
+})
 
 
-export default connect()(Header);
+export default connect(mapStateToProps)(Header);

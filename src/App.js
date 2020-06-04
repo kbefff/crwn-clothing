@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 
@@ -9,7 +10,7 @@ import ShopPage from './pages/shop/shop.component'
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.comopnent'
 import Header from './components/header/header.component'
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
-
+import { setCurrentUser } from './redux/user/user.action'
 
 // class so we can store state
 // store state of auth
@@ -27,6 +28,7 @@ class App extends React.Component{
   // we want to know when people have signed in and signed out
   // this is an open subscription between our app and firebase
   componentDidMount() {
+    const { setCurrentUser } = this.props;
     // method from firebase auth taking parameter of what the user state is
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       // user authenticated session persistence --> when you refresh the page your session is saved
@@ -36,21 +38,17 @@ class App extends React.Component{
         const userRef = await createUserProfileDocument(userAuth);
 
           userRef.onSnapshot(snapShot => {
-            this.setState(
-              {
-                currentUser: {
+                setCurrentUser ({
                   id: snapShot.id,
                   ...snapShot.data()
-                }
-              });
-
-              console.log(this.state)
+            
+              })
           });
         }
       // if the user logs out, set user to null from auth Library
-        else {
-          this.setState({ currentUser: userAuth})
-        }
+        // else {
+          setCurrentUser(userAuth)
+        // }
     });
     
 
@@ -67,7 +65,7 @@ class App extends React.Component{
       {/* place header outside switch and routes that contain all page components
       by doing this our header is always present and rendered */}
       {/* header needs state so we know when there should be a logout option */}
-      <Header currentUser={this.state.currentUser}/>
+      <Header/>
         {/* switch - as long as one route matches we know somethign will render. 
         Only one thing will render */}
         <Switch>
@@ -81,5 +79,9 @@ class App extends React.Component{
   }
 }
 
-export default App;
+const mapDispatchToProps= dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(App);
 
