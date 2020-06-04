@@ -5,6 +5,7 @@
 // payload --> may or may not have. the payload can be anything. the only reason we can say it's anything
 // is because maybe with the payload object we want to do something with it to update the state
 // we may pass an object that we may set as our state or use to make transformations
+import { UserActionTypes } from './user.types'
 
 
 const INITIAL_STATE = {
@@ -13,7 +14,7 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) { // base on action type value
-        case 'SET_CURRENT_USER':
+        case UserActionTypes.SET_CURRENT_USER:
             return { //return new objet out of reducer item
                 ...state,
                 currentUser: action.payload
