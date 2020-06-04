@@ -1,5 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'; //higher order component that lets us have access to things related to redux
+//higher order takes components as arguments and returns a new suped up component
 
 import { auth } from '../../firebase/firebase.utils'
 // we are setting it to the logo key word
@@ -35,6 +37,8 @@ const Header = ({ currentUser }) => (
 
     </div>
 
-)
+);
 
-export default Header;
+
+
+export default connect()(Header);
