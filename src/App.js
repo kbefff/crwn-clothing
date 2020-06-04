@@ -10,7 +10,7 @@ import ShopPage from './pages/shop/shop.component'
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.comopnent'
 import Header from './components/header/header.component'
 import { auth, createUserProfileDocument } from './firebase/firebase.utils'
-import { setCurrentUser } from './redux/user/user.action'
+import { setCurrentUser } from './redux/user/user.actions'
 
 // class so we can store state
 // store state of auth

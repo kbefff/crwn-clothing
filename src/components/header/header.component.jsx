@@ -4,13 +4,16 @@ import { connect } from 'react-redux'; //higher order component that lets us hav
 //higher order takes components as arguments and returns a new suped up component
 
 import { auth } from '../../firebase/firebase.utils'
+import CartIcon from '../cart-icon/cart-icon.component'
+import CartDropdown from '../cart-dropdown/cart-dropdown.component'
+// import CartIcon from '../cart-icon/cart-icon.component'
 // we are setting it to the logo key word
 import {ReactComponent as Logo} from '../../assets/crown.svg'
 import './header.styles.scss';
 
 
 //functional component
-const Header = ({ currentUser }) => (
+const Header = ({ currentUser, hidden }) => (
     // div that contains header code
     <div className='header'> 
         {/* logo that links to hompage on click */}
@@ -27,20 +30,22 @@ const Header = ({ currentUser }) => (
                 <Link className='option' to='/shop'>
                     CONTACT
                 </Link>
-                {
-                    currentUser ?
-                    <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>
-                    :
-                    <Link className='option' to='/signIn'></Link>
-                }
+                { currentUser ? (
+                    <div className='option' onClick={() => auth.signOut()}>
+                        SIGN OUT
+                    </div>
+                ) : (
+                    <Link className='option' to='/signIn'>SIGN IN</Link>
+                )}
+                <CartIcon />
             </div>
-
-    </div>
-
+            { hidden ? null : <CartDropdown />}
+        </div>
 );
 
-const mapStateToProps = state => ({ // the state is the top level root reducet
-    currentUser:  state.user.currentUser
+const mapStateToProps = ({user: { currentUser },cart: { hidden}}) => ({ // the state is the top level root reducet
+    currentUser,
+    hidden
 })
 
 
