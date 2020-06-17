@@ -23,7 +23,8 @@ const mapStateToProps = ({ cart: { cartItems }}) => ({
     (accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity,
     0
   )
-});
+}); // we only want component to re-render when something changes
+// we need to use memoiizatiion
 
 export default connect(
   mapStateToProps,
