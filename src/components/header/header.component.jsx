@@ -2,14 +2,19 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'; //higher order component that lets us have access to things related to redux
 //higher order takes components as arguments and returns a new suped up component
+import { createStructuredSelector } from 'reselect';
 
 import { auth } from '../../firebase/firebase.utils'
 import CartIcon from '../cart-icon/cart-icon.component'
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selector'
 // import CartIcon from '../cart-icon/cart-icon.component'
 // we are setting it to the logo key word
 import {ReactComponent as Logo} from '../../assets/crown.svg'
 import './header.styles.scss';
+
+
 
 
 //functional component
@@ -43,9 +48,9 @@ const Header = ({ currentUser, hidden }) => (
         </div>
 );
 
-const mapStateToProps = ({user: { currentUser },cart: { hidden}}) => ({ // the state is the top level root reducet
-    currentUser,
-    hidden
+const mapStateToProps =  createStructuredSelector({ // the state is the top level root reducet
+    currentUser: selectCurrentUser,
+    hidden: selectCartHidden
 })
 
 
