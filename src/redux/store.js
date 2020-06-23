@@ -1,6 +1,7 @@
 // the middleware between action and root recuder ar functions that recieve objets, do something with them, then pass them out
 import { createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger'; // makes it easier to understand what we're doing
+import { persistStore } from 'redux-persist'
 
 import rootReducer from './root-reducer';
 
