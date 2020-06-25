@@ -51,11 +51,11 @@ class App extends React.Component{
           setCurrentUser(userAuth)
         // }
     });
-  }
+  };
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
-  }
+  };
 
   render(){
     return (
@@ -84,7 +84,7 @@ class App extends React.Component{
       </div>
     );
   }
-}
+};
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
