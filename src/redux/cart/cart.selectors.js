@@ -9,12 +9,13 @@ const selectCart = state => state.cart;
 export const selectCartItems = createSelector( //this is a memoized selector
     [selectCart], //array of input slecteros
     (cart) => cart.cartItems //function that returns the value we want out of the slector
-)
+);
 
 export const selectCartHidden = createSelector(
     [selectCart],
     cart => cart.hidden
-)
+);
+
 export const selectCartItemsCount = createSelector(
     [selectCartItems],
     cartItems =>
@@ -22,7 +23,7 @@ export const selectCartItemsCount = createSelector(
         (accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity,
         0
     )
-)
+);
 
 export const selectCartTotal = createSelector(
     [selectCartItems],
@@ -31,4 +32,4 @@ export const selectCartTotal = createSelector(
         (accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity * cartItem.price,
         0
     )
-)
+);

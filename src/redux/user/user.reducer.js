@@ -5,12 +5,12 @@
 // payload --> may or may not have. the payload can be anything. the only reason we can say it's anything
 // is because maybe with the payload object we want to do something with it to update the state
 // we may pass an object that we may set as our state or use to make transformations
-import { UserActionTypes } from './user.types'
+import { UserActionTypes } from './user.types';
 
 
 const INITIAL_STATE = {
     currentUser: null // use as detaulf paramater value for state
-}
+};
 
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) { // base on action type value
@@ -26,6 +26,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return state;
 
     }
-}
+};
 
 export default userReducer;

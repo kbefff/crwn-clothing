@@ -1,7 +1,7 @@
 // represents the overall reducer
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';//this gives us the actual local storage on window browser
+import storage from 'redux-persist/lib/storage'; //this gives us the actual local storage on window browser
 
 import userReducer from './user/user.reducer';
 import cartReducer from './cart/cart.reducer';
