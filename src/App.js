@@ -39,12 +39,10 @@ class App extends React.Component{
       if (userAuth) {
         // going to use this to check if our db has updated
         const userRef = await createUserProfileDocument(userAuth);
-
           userRef.onSnapshot(snapShot => {
                 setCurrentUser ({
                   id: snapShot.id,
                   ...snapShot.data()
-            
               })
           });
         }
@@ -53,8 +51,6 @@ class App extends React.Component{
           setCurrentUser(userAuth)
         // }
     });
-    
-
   }
 
   componentWillUnmount() {
@@ -64,7 +60,6 @@ class App extends React.Component{
   render(){
     return (
       <div>
-
       {/* place header outside switch and routes that contain all page components
       by doing this our header is always present and rendered */}
       {/* header needs state so we know when there should be a logout option */}
@@ -86,17 +81,17 @@ class App extends React.Component{
             } 
           />
         </Switch>
-
       </div>
     );
   }
 }
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
-})
+});
+
 const mapDispatchToProps= dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
-})
+});
 
 export default connect(
   mapStateToProps, 
