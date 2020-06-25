@@ -1,6 +1,4 @@
-import {
-    createSelector
-} from 'reselect';
+import { createSelector } from 'reselect';
 
 // input selector = a function that takes namig structure
 // of gets the whole state and just returns a slice of it, one layer deep ususally

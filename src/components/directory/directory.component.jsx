@@ -1,13 +1,14 @@
 import React from 'react';
-// with Router is a higher order component
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
+import {selectDirectorySections } from '../../redux/directory/directory.selectors';
 
 import MenuItem from '../menu-item/menu-item.component';
 
 import './directory.styles.scss';
 
-const Directory =({ sections }) => {
+const Directory =({ sections }) => (
     <div className='directory-menu'>
       {sections.map(({id, ...otherSectiionProps }) => (
         <MenuItem key={id} {...otherSectiionProps} />
@@ -15,7 +16,8 @@ const Directory =({ sections }) => {
     </div>
   );
 
-}
-const mapStateToProps = ({})
+const mapStateToProps = createStructuredSelector({
+  sections: selectDirectorySections
+});
 
-export default Directory;
+export default connect(mapStateToProps)(Directory);
