@@ -11,7 +11,5 @@ a {
 
 /* nullify default browser padding */
 * {
-
   box-sizing: border-box;
-
 }

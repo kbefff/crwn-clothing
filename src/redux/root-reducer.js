@@ -4,7 +4,8 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';//this gives us the actual local storage on window browser
 
 import userReducer from './user/user.reducer';
-import cartReducer from './cart/cart.reducer'
+import cartReducer from './cart/cart.reducer';
+import directoryReducer from './directory/directory.reducer';
 
 const persistConfig = {
     key: 'root', //we want to start storing things at the root
@@ -15,7 +16,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     user: userReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    directory: directoryReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
