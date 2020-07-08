@@ -1,9 +1,9 @@
 import React from 'react';
 
-import CustomButton from '../custom-button/custom-button.component'
+import CustomButton from '../custom-button/custom-button.component';
 import FormInput from '../form-input/form-input.component';
 
-import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 import './sign-in.styles.scss'
 
 // we are going to use a class component because we have to store what the user is typing in
@@ -20,7 +20,7 @@ class SignIn extends React.Component {
             email: '',
             password: ''
         };
-    }
+    };
 
     handleSubmit = async event => {
         event.preventDefault();
@@ -33,7 +33,7 @@ class SignIn extends React.Component {
         } catch (error) {
             console.log(error)
         }
-    }
+    };
 
     handleChange = event => {
         // we get name and value from our input value
@@ -49,7 +49,6 @@ class SignIn extends React.Component {
             <div className='sign-in'>
                 <h2>I already have an acount</h2>
                 <span>Sign in with your email and password</span>
-
             {/* on submit function tht calls our method handle submit which for now will prevent default submit action */}
                 <form onSubmit={this.handleSubmit}>
 
@@ -81,10 +80,8 @@ class SignIn extends React.Component {
                 </form>
             </div>  
             // native form element
-            
-
-    )
-}
-}
+        );
+    };
+};
 
 export default SignIn;

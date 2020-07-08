@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './custom-button.styles.scss'
+import './custom-button.styles.scss';
 
 // this is going to be a presentational componenet --> a functional componenet with no state
 // we are building as own componenet so that it can be used in any other component that might need
@@ -12,6 +12,6 @@ const CustomButton = ({children, isGoogleSignIn, inverted, ...otherProps}) => (
         {...otherProps}>
         {children}
     </button>
-)
+);
 
 export default CustomButton
