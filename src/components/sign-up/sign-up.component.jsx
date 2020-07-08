@@ -27,7 +27,7 @@ class SignUp extends React.Component {
         if (password !== confirmPassword ) {
             alert('passwords do not match');
             return;
-        }
+        };
 
 
         try {
@@ -48,8 +48,8 @@ class SignUp extends React.Component {
             });
         } catch (error) {
             console.log(error);
-        }
-    }
+        };
+    };
 
     handleChange = event => {
         const { name, value } = event.target;
@@ -99,9 +99,9 @@ class SignUp extends React.Component {
                     <CustomButton type='submit'>SIGN UP</CustomButton>
                 </form>
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 
 export default SignUp;

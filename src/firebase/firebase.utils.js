@@ -1,9 +1,9 @@
 
 //gives us access to firestore and auth
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from 'firebase/app';
+import 'firebase/auth';
 // for the databse
-import 'firebase/firestore'
+import 'firebase/firestore';
 
 
 const config = {
@@ -22,9 +22,9 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     // our function has to make sure we're getting back a valid object so we can only sign out when we are signed in
     if (!userAuth) {
         return;    
-    }
+    };
 
-    const userRef = firestore.doc(`users/${userAuth.uid}`)
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
 
     const snapShot = await userRef.get();
 
@@ -42,11 +42,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
             })
         } catch (error) {
             console.log('error creating user', error.message);
-        }
-    }
+        };
+    };
 
     return userRef;
-}
+};
 
 firebase.initializeApp(config);
 
@@ -55,9 +55,9 @@ export const firestore = firebase.firestore()
 
 
 
-const provider = new firebase.auth.GoogleAuthProvider()
+const provider = new firebase.auth.GoogleAuthProvider();
 // we want to aslway trigger the google pop=up whenever we use the google auth provider for authentication and sign in
 provider.setCustomParameters({prompt: 'select_account'});
-export const signInWithGoogle = () => auth.signInWithPopup(provider)
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
