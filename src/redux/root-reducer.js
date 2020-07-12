@@ -13,7 +13,7 @@ const persistConfig = {
     storage,
     whitelist: ['cart'] //the only thing we want to whitelist, the only reducer we want to persist is the cart
     //this is because firebase handles the user reducer
-}
+};
 
 const rootReducer = combineReducers({
     user: userReducer,

@@ -23,7 +23,7 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
         return cartItems.filter(
             cartItem => cartItem.id !== cartItemToRemove.id
         ) 
-    }
+    };
 
     // else, decrement
     return cartItems.map(
@@ -33,4 +33,4 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
         : cartItem
     )
 
-}
+};
