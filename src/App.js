@@ -23,10 +23,10 @@ class App extends React.Component{
 
     this.state = {
       currentUser: null
-    }
-  }
+    };
+  };
 
-  unsubscribeFromAuth = null
+  unsubscribeFromAuth = null;
 
   // we want to know when people have signed in and signed out
   // this is an open subscription between our app and firebase
@@ -45,7 +45,7 @@ class App extends React.Component{
                   ...snapShot.data()
               })
           });
-        }
+        };
       // if the user logs out, set user to null from auth Library
         // else {
           setCurrentUser(userAuth)
@@ -83,7 +83,7 @@ class App extends React.Component{
         </Switch>
       </div>
     );
-  }
+  };
 };
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
